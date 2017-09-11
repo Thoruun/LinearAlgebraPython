@@ -23,6 +23,12 @@ class Vector(object):
     def __eq__(self, v):
         return self.coordinates == v.coordinates
 
+    def __getitem__(self,index):
+        return self.coordinates[index]
+
+    def __setitem__(self,index,value):
+        self.coordinates[index] = value
+
     def __iter__(self):
         return iter(self.coordinates)
 
@@ -45,9 +51,7 @@ def add(vc1, vc2):
         if vc1.dimension != vc2.dimension:
             return 0
 
-    # print (list(map(add, vc1, vc2)))
     return Vector(list(map(add, vc1, vc2)))
-    # return [x + y for x, y in zip(vc1, vc2)]
 
 def sub(vc1, vc2):
     print ("SUB VC1 = {}, VC2 = {}".format(vc1, vc2))
@@ -60,7 +64,6 @@ def sub(vc1, vc2):
         if vc1.dimension != vc2.dimension:
             return 0
 
-    # print (list(map(add, vc1, vc2)))
     return Vector(list(map(sub, vc1, vc2)))
 
 def sclrMult(vc1, scalar):
@@ -70,8 +73,10 @@ def sclrMult(vc1, scalar):
             sumOfNumbers = round(vc1 * scalar, 4)
             print("Returning number {}".format(sumOfNumbers))
             return sumOfNumbers
-        # else:
-        #     return 0
+            
+        multVector = []
+        for i in range(vc1.dimension):
+            if scalar > 0:
+                multVector.insert(i - 1, vc1[i - 1] * scalar)
 
-        # print (list(map(add, vc1, vc2)))
-        return Vector(list(map(sclrMult, vc1, scalar)))
+        return multVector

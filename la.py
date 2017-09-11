@@ -21,6 +21,14 @@ print(my_vector_sub)
 
 my_vector33 = vc.Vector([1.671, -1.012, -0.318])
 scalar = 7.41
+
+multVector = []
+for i in range(my_vector33.count):
+    print(multVector)
+    multVector.append(my_vector33[i - 1] * scalar)
+
+print(multVector)
+
 my_vector_sclrMult = vc.sclrMult(my_vector33, scalar)
 print(my_vector_sclrMult)
 # %pwd
