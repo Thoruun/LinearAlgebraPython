@@ -1,6 +1,7 @@
 from operator import add
 from operator import sub
 from numbers import Number
+import math
 
 class Vector(object):
     def __init__(self, coordinates):
@@ -67,16 +68,31 @@ def sub(vc1, vc2):
     return Vector(list(map(sub, vc1, vc2)))
 
 def sclrMult(vc1, scalar):
-        print ("SCLR_MULT VC1 = {}, scalar = {}".format(vc1, scalar))
+    print ("SCLR_MULT VC1 = {}, scalar = {}".format(vc1, scalar))
 
-        if isinstance(vc1, (int, float)) and isinstance(scalar, (int, float)):
-            sumOfNumbers = round(vc1 * scalar, 4)
-            print("Returning number {}".format(sumOfNumbers))
-            return sumOfNumbers
-            
-        multVector = []
-        for i in range(vc1.dimension):
-            if scalar > 0:
-                multVector.insert(i - 1, vc1[i - 1] * scalar)
+    if isinstance(vc1, (int, float)) and isinstance(scalar, (int, float)):
+        sumOfNumbers = round(vc1 * scalar, 4)
+        print("Returning number {}".format(sumOfNumbers))
+        return sumOfNumbers
 
-        return multVector
+    multVector = []
+    for i in range(vc1.dimension):
+        if scalar > 0:
+            multVector.insert(i - 1, vc1[i - 1] * scalar)
+
+    return multVector
+
+def magnitude(vc1):
+
+    magnitude = 0
+    if vc1.dimension == 0:
+        return magnitude
+    else:
+        sum = 0
+        for coord in vc1:
+            sum = sum + pow(coord, 2)
+
+        magnitude = math.sqrt(sum)
+
+        print ("MAGNITUDE OF VC1 = {}, is {}".format(vc1, magnitude))
+        return magnitude
