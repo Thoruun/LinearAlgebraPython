@@ -30,6 +30,22 @@ print(my_vector_sclrMult)
 
 print("=========================")
 
-my_vector44 = vc.Vector([3, 4])
-my_vector44_magnitude = vc.magnitude(my_vector44)
+my_vector44 = vc.Vector([-0.221, 7.437])
+my_vector44_magnitude = my_vector44.magnitude()
+
+print("=========================")
+my_vector444 = vc.Vector([8.813, -1.331, -6.247])
+my_vector444_magnitude = my_vector444.magnitude()
+
+print("=========================")
+
+my_vector5 = vc.Vector([5.581, -2.136])
+my_vector5_unit_vector = my_vector5.direction()
+
+print(my_vector5_unit_vector)
+print("=========================")
+my_vector6 = vc.Vector([1.996, 3.108, -4.554])
+my_vector6_unit_vector = my_vector6.direction()
+
+print(my_vector6_unit_vector)
 # %pwd

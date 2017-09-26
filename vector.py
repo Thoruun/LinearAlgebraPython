@@ -41,6 +41,29 @@ class Vector(object):
     #     self.count += 1
         # return self.coordinates[self.count - 1]
 
+    def magnitude(self):
+        magnitude = 0
+        if self.dimension == 0:
+            return magnitude
+        else:
+            sum = 0
+            for coord in self:
+                sum = sum + pow(coord, 2)
+
+            magnitude = math.sqrt(sum)
+            magnitude = round(magnitude, 3)
+            print ("MAGNITUDE OF {}, is {}".format(self, magnitude))
+            return magnitude
+
+    def direction(self):
+        unitVector = []
+        magnitude = self.magnitude()
+
+        for i in range(self.dimension):
+            unitVector.insert(i - 1, round(self[i - 1] / magnitude, 3))
+
+        return unitVector
+
 def add(vc1, vc2):
     print ("ADD VC1 = {}, VC2 = {}".format(vc1, vc2))
 
@@ -81,18 +104,3 @@ def sclrMult(vc1, scalar):
             multVector.insert(i - 1, vc1[i - 1] * scalar)
 
     return multVector
-
-def magnitude(vc1):
-
-    magnitude = 0
-    if vc1.dimension == 0:
-        return magnitude
-    else:
-        sum = 0
-        for coord in vc1:
-            sum = sum + pow(coord, 2)
-
-        magnitude = math.sqrt(sum)
-
-        print ("MAGNITUDE OF VC1 = {}, is {}".format(vc1, magnitude))
-        return magnitude
