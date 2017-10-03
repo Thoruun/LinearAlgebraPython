@@ -48,4 +48,32 @@ my_vector6 = vc.Vector([1.996, 3.108, -4.554])
 my_vector6_unit_vector = my_vector6.direction()
 
 print(my_vector6_unit_vector)
+
+vc_dot_1 = vc.Vector([7.887, 4.138])
+vc_dot_2 = vc.Vector([-8.802, 6.776])
+vc_dot_3 = vc.Vector([-5.955, -4.904, -1.874])
+vc_dot_4 = vc.Vector([-4.496, -8.755, 7.103])
+
+vc_angle_rad_1 = vc.Vector([3.183, -7.627])
+vc_angle_rad_2 = vc.Vector([-2.668, 5.319])
+vc_angle_deg_1 = vc.Vector([7.35, 0.221, 5.188])
+vc_angle_deg_2 = vc.Vector([2.751, 8.259, 3.985])
+
+vc_dot_product1 = vc.dotProduct(vc_dot_1, vc_dot_2)
+vc_dot_product2 = vc.dotProduct(vc_dot_3, vc_dot_4)
+
+print("Dot Product 1 is:{}".format(vc_dot_product1))
+print("Dot Product 2 is:{}".format(vc_dot_product2))
+
+# vc_angle_deg_1 = vc.Vector([1, 2, -1])
+# vc_angle_deg_2 = vc.Vector([3, 1, 0])
+
+vc_angle_rad_1 = vc.angleBetween(vc_angle_rad_1, vc_angle_rad_2, inRadians=True)
+
+print("Angle in Rad is:{}".format(vc_angle_rad_1))
+
+vc_angle_deg_1 = vc.angleBetween(vc_angle_deg_1, vc_angle_deg_2, inRadians=False)
+
+print("Angle in Deg is:{}".format(vc_angle_deg_1))
+
 # %pwd

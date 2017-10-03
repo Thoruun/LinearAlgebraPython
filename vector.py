@@ -51,7 +51,7 @@ class Vector(object):
                 sum = sum + pow(coord, 2)
 
             magnitude = math.sqrt(sum)
-            magnitude = round(magnitude, 3)
+            magnitude = magnitude
             print ("MAGNITUDE OF {}, is {}".format(self, magnitude))
             return magnitude
 
@@ -60,7 +60,7 @@ class Vector(object):
         magnitude = self.magnitude()
 
         for i in range(self.dimension):
-            unitVector.insert(i - 1, round(self[i - 1] / magnitude, 3))
+            unitVector.insert(i - 1, self[i - 1] / magnitude)
 
         return unitVector
 
@@ -68,7 +68,7 @@ def add(vc1, vc2):
     print ("ADD VC1 = {}, VC2 = {}".format(vc1, vc2))
 
     if isinstance(vc1, (int, float)) and isinstance(vc2, (int, float)):
-        sumOfNumbers = round(vc1 + vc2, 4)
+        sumOfNumbers = vc1 + vc2
         print("Returning number {}".format(sumOfNumbers))
         return sumOfNumbers
     else:
@@ -81,7 +81,7 @@ def sub(vc1, vc2):
     print ("SUB VC1 = {}, VC2 = {}".format(vc1, vc2))
 
     if isinstance(vc1, (int, float)) and isinstance(vc2, (int, float)):
-        sumOfNumbers = round(vc1 - vc2, 4)
+        sumOfNumbers = vc1 - vc2
         print("Returning number {}".format(sumOfNumbers))
         return sumOfNumbers
     else:
@@ -94,7 +94,7 @@ def sclrMult(vc1, scalar):
     print ("SCLR_MULT VC1 = {}, scalar = {}".format(vc1, scalar))
 
     if isinstance(vc1, (int, float)) and isinstance(scalar, (int, float)):
-        sumOfNumbers = round(vc1 * scalar, 4)
+        sumOfNumbers = vc1 * scalar
         print("Returning number {}".format(sumOfNumbers))
         return sumOfNumbers
 
@@ -104,3 +104,25 @@ def sclrMult(vc1, scalar):
             multVector.insert(i - 1, vc1[i - 1] * scalar)
 
     return multVector
+
+def dotProduct(vc1, vc2):
+    if vc1.dimension != vc2.dimension:
+        return IndexError
+
+    dotProduct = 0
+    for i in range(vc1.dimension):
+        dotProduct += vc1[i] * vc2[i]
+
+    return dotProduct
+
+def angleBetween(vc1, vc2, inRadians):
+    if vc1.dimension != vc2.dimension:
+        return IndexError
+
+    angle = dotProduct(vc1, vc2) / (vc1.magnitude() * vc2.magnitude())
+    print("cos (θ) = {}".format(angle))
+    angle = math.acos(angle)
+    if inRadians == False:
+        angle = math.degrees(angle)
+
+    return angle
